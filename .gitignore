@@ -1,0 +1,54 @@
+### Android / Gradle ###
+**/build/
+**/.gradle/
+**/.gradle-local/
+**/.jdk/
+**/.kotlin/
+**/gradle-home/
+**/gradle-user-home*/
+
+### Local config / secrets ###
+**/local.properties
+**/keystore.properties
+*.jks
+*.keystore
+
+### IDE ###
+**/.idea/
+*.iml
+
+### Misc ###
+.DS_Store
+.externalNativeBuild/
+.cxx/
+/captures/
+
+# Local databases
+nearwork-db-copy.sqlite
+tmp-howfar/
+nearwork-db
+device-nearwork-db*
+
+# Build cache and IDE artifacts
+app/gradle-project-cache/
+gradle-project-cache/
+app/screenshots/
+screenshots/
+app/window_dump*.xml
+window_dump*.xml
+desktop.ini
+gradle/config.properties
+app/gradle/config.properties
+docs/
+design/
+data/
+thesis-assets/
+tests/
+scripts/README.md
+.github/README.md
+app/app/src/androidTest/ExampleInstrumentedTest.kt
+app/app/src/androidTest/java/com/example/nearworkthesis/ExampleInstrumentedTest.kt
+app/app/src/test/java/com/example/nearworkthesis/ExampleUnitTest.kt
+app/scripts/run_matlab_preprocessing_test.ps1
+app/app/test-inputs/.gitkeep
+app/app/test-inputs/preprocessing/.gitkeep

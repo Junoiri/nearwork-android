@@ -1,0 +1,27 @@
+package com.example.nearworkthesis.core.ui
+
+object UiTestTags {
+    const val SplashScreen = "splash_screen"
+    const val HomeScreen = "home_screen"
+    const val HomeOpenImportButton = "home_open_import_button"
+    const val ImportScreen = "import_screen"
+    const val ImportImportingStatus = "import_importing_status"
+    const val ImportHowfarStatusCard = "import_howfar_status_card"
+    const val MainNavHome = "main_nav_home"
+    const val MainNavDaily = "main_nav_daily"
+    const val MainNavWeekly = "main_nav_weekly"
+    const val MainNavHistory = "main_nav_history"
+    const val DailyScreen = "daily_screen"
+    const val WeeklyScreen = "weekly_screen"
+    const val HistoryScreen = "history_screen"
+    const val HistoryListModeButton = "history_list_mode_button"
+    const val HistoryCalendarModeButton = "history_calendar_mode_button"
+    const val SettingsScreen = "settings_screen"
+    const val SettingsGeneralCategory = "settings_general_category"
+    const val SettingsPostImportNotificationSwitch = "settings_post_import_notification_switch"
+    const val SettingsApplyButton = "settings_apply_button"
+    const val SettingsCloseDistanceField = "settings_close_distance_field"
+    const val SettingsExtremeCloseField = "settings_extreme_close_field"
+    const val SettingsThresholdOrderingError = "settings_threshold_ordering_error"
+    const val SettingsDebugOverlaySwitch = "settings_debug_overlay_switch"
+}

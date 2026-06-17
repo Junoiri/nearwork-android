@@ -11,13 +11,18 @@ Developed as a bachelor's thesis at the Faculty of Fundamental Problems of Techn
 The app implements a complete data pipeline from raw HowFar sensor output to clinically interpretable exposure metrics:
 
 * **Import** — parses CSV files exported from the HowFar device via Android's Storage Access Framework
-* **Storage** — validates and stores measurements locally in a SQLite database; no data leaves the device
+
+* **Storage** — validates and stores measurements locally in a SQLite database; no data leaves the device unless explicitly exported by the user
+
 * **Metrics** — computes two exposure metrics per session:
 
   * **Diopter-hours (D-h)** — cumulative accommodative demand, integrated via the trapezoidal rule
   * **Nearwork Risk Score (NRS)** — composite metric combining vergence demand, distance zone weighting, and an illuminance-dependent multiplier
+
 * **Visualisation** — multi-screen dashboard with per-session, daily, weekly, and monthly breakdowns across multiple child profiles
+
 * **Export** — Results Pack ZIP containing `daily.csv`, `sessions.csv`, `import_quality.csv`, and `manifest.json` for offline analysis
+
 * **Demo mode** — bundled sample datasets based on real HowFar measurements for exploring the app without a physical device
 
 ---
@@ -25,7 +30,10 @@ The app implements a complete data pipeline from raw HowFar sensor output to cli
 ## Architecture
 
 Single-activity Jetpack Compose app with MVVM and clean architecture layering:
+
+```text
 UI → ViewModel → Use Cases → Repository → Room (SQLite) / DataStore
+```
 
 Timestamps are stored in UTC; `localDay` grouping is derived from the active profile's `timezoneId`. No UI layer has direct access to Room, DataStore, or USB APIs.
 
@@ -49,18 +57,33 @@ This creates a separate demo profile and loads bundled sample data based on real
 
 ---
 
-## Building
+## Build and run
 
-Open the `app/` directory (not the repo root) in Android Studio. This generates `local.properties` with your SDK path, which Gradle requires.
+Open the `app/` directory, not the repository root, in Android Studio.
 
-Then build from the terminal:
+Prerequisites:
+
+* Java 17
+* Android SDK installed
+* A valid `app/local.properties` pointing to your Android SDK. Android Studio usually creates this automatically; alternatively, set it manually or use `ANDROID_HOME`.
+* Any Android device running Android 8.0+ — either a physical device or an emulator
+
+Build from the terminal:
 
 ```bash
 cd app
 ./gradlew assembleDebug
 ```
 
-Gradle wrapper is included. Java 17 is required.
+Install on the currently connected device or emulator:
+
+```bash
+./gradlew installDebug
+```
+
+You can also run the app directly from Android Studio by selecting any available device or emulator and pressing **Run**.
+
+Gradle wrapper is included.
 
 ---
 
@@ -96,17 +119,17 @@ nearwork-android/
 
 ## Project context
 
-This repository contains the software layer only. The HowFar hardware (spectacle-mounted ToF + ALS sensor module with RTC) was developed independently. The thesis evaluating this system — *Mobile Application for Monitoring Nearwork and Supporting Myopia Prevention Based on Wearable Sensor Data* (M. Sadłowska, 2026) — includes cross-validation of the ambient light sensor against two independent reference instruments and a field evaluation across 233 nearwork sessions.
+This repository contains the software layer only. The HowFar hardware — a spectacle-mounted ToF and ambient light sensor module with RTC — was developed independently. The thesis evaluating this system, *Mobile Application for Monitoring Nearwork and Supporting Myopia Prevention Based on Wearable Sensor Data* (M. Sadłowska, 2026), includes cross-validation of the ambient light sensor against two independent reference instruments and a field evaluation across 233 nearwork sessions.
 
 ---
 
 ## Contact
 
-**Author:** Marta Sadłowska · [github.com/Junoiri](https://github.com/Junoiri)
-**Supervisor:** Prof. D. Robert Iskander · Faculty of Fundamental Problems of Technology, Wrocław University of Science and Technology
+* **Author:** Marta Sadłowska · [github.com/Junoiri](https://github.com/Junoiri)
+* **Supervisor:** Prof. D. Robert Iskander · Faculty of Fundamental Problems of Technology, Wrocław University of Science and Technology
 
 ---
 
-## Licence
+## License
 
 Academic project — not licensed for redistribution.
